@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Excel logo">
+  <rect width="96" height="96" rx="18" fill="#107c41"/>
+  <rect x="34" y="20" width="42" height="56" rx="5" fill="#21a366"/>
+  <path d="M34 28h42M34 40h42M34 52h42M34 64h42M48 20v56M62 20v56" stroke="#fff" stroke-width="4" opacity=".65"/>
+  <rect x="16" y="28" width="36" height="40" rx="6" fill="#185c37"/>
+  <path d="M25 40l7 10-8 11h8l4-7 4 7h8l-8-11 7-10h-8l-3 6-3-6z" fill="#fff"/>
+</svg>

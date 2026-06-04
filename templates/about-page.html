@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Devendra Nikam</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="about-detail-page">
+        <style>
+            .about-detail-page {
+                position: relative;
+                min-height: 100vh;
+                padding: 100px 7%;
+                overflow: hidden;
+                background:
+                    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                    linear-gradient(120deg, rgba(255, 183, 77, 0.14), transparent 34%),
+                    linear-gradient(300deg, rgba(22, 163, 74, 0.16), transparent 38%),
+                    linear-gradient(135deg, #101114 0%, #151711 48%, #08120f 100%);
+                background-size: 74px 74px, 74px 74px, auto, auto, auto;
+                color: #fff;
+            }
+
+            .about-detail-page::before {
+                content: "";
+                position: absolute;
+                width: 560px;
+                height: 560px;
+                left: -220px;
+                top: 80px;
+                border-radius: 50%;
+                background: rgba(246, 183, 60, 0.13);
+                filter: blur(90px);
+            }
+
+            .about-detail-page::after {
+                content: "";
+                position: absolute;
+                width: 460px;
+                height: 460px;
+                right: -180px;
+                bottom: 40px;
+                border-radius: 50%;
+                background: rgba(34, 197, 94, 0.12);
+                filter: blur(90px);
+            }
+
+            .about-detail-container {
+                position: relative;
+                z-index: 2;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .back-home {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: 46px;
+                padding: 0 18px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.08);
+                color: #f6b73c;
+                text-decoration: none;
+                font-weight: 600;
+                border: 1px solid rgba(246, 183, 60, 0.28);
+                box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+                margin-bottom: 42px;
+                transition: 0.3s ease;
+            }
+
+            .back-home:hover {
+                color: #fff;
+                background: rgba(246, 183, 60, 0.20);
+                transform: translateY(-3px);
+                box-shadow: 0 18px 42px rgba(245, 158, 11, 0.22);
+            }
+
+            .about-detail-grid {
+                display: grid;
+                grid-template-columns: 360px 1fr;
+                gap: 70px;
+                align-items: center;
+            }
+
+            .about-detail-image {
+                position: relative;
+            }
+
+            .about-detail-image::before {
+                content: "";
+                position: absolute;
+                width: 310px;
+                height: 410px;
+                top: -22px;
+                left: 20px;
+                border-radius: 28px;
+                background: linear-gradient(135deg, #f59e0b, #22c55e);
+                transform: rotate(-5deg);
+                opacity: 0.9;
+            }
+
+            .about-detail-image img {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                height: 430px;
+                object-fit: cover;
+                border-radius: 28px;
+                border: 8px solid rgba(255, 255, 255, 0.92);
+                box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+            }
+
+            .about-detail-text {
+                padding: 44px;
+                border-radius: 32px;
+                background: rgba(255, 255, 255, 0.075);
+                border: 1px solid rgba(246, 183, 60, 0.22);
+                box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+                backdrop-filter: blur(14px);
+            }
+
+            .about-detail-text .intro-text {
+                display: inline-block;
+                color: #f6b73c;
+                letter-spacing: 5px;
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 14px;
+            }
+
+            .about-detail-text h1 {
+                font-size: clamp(48px, 7vw, 82px);
+                line-height: 1;
+                margin: 0 0 28px;
+                color: #fff;
+            }
+
+            .about-detail-text h1::after {
+                content: "";
+                display: block;
+                width: 86px;
+                height: 5px;
+                border-radius: 999px;
+                background: linear-gradient(135deg, #f59e0b, #22c55e);
+                margin-top: 18px;
+            }
+
+            .about-detail-text p {
+                font-size: 17px;
+                line-height: 1.9;
+                color: #d8d5e8;
+                margin-bottom: 20px;
+            }
+
+            .about-detail-links {
+                display: flex;
+                gap: 16px;
+                margin-top: 34px;
+            }
+
+            .about-detail-links a {
+                width: 48px;
+                height: 48px;
+                border-radius: 16px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 1.25rem;
+                text-decoration: none;
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(246, 183, 60, 0.28);
+                transition: 0.3s ease;
+            }
+
+            .about-detail-links a:hover {
+                background: #f59e0b;
+                transform: translateY(-4px);
+                box-shadow: 0 18px 36px rgba(245, 158, 11, 0.28);
+            }
+
+            @media (max-width: 768px) {
+                .about-detail-page {
+                    padding: 90px 6%;
+                }
+
+                .about-detail-grid {
+                    grid-template-columns: 1fr;
+                    gap: 42px;
+                }
+
+                .about-detail-image {
+                    max-width: 320px;
+                    margin: 0 auto;
+                }
+
+                .about-detail-image::before {
+                    left: 50%;
+                    transform: translateX(-50%) rotate(-5deg);
+                    width: 270px;
+                    height: 350px;
+                }
+
+                .about-detail-image img {
+                    height: 360px;
+                }
+
+                .about-detail-text {
+                    padding: 32px 24px;
+                }
+
+                .about-detail-text p {
+                    font-size: 16px;
+                }
+
+                .about-detail-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+
+        <div class="about-detail-container">
+            <a href="{{ url_for('home') }}" class="back-home animate-up delay-1">Back Home</a>
+
+            <div class="about-detail-grid">
+                <div class="about-detail-image animate-left delay-2">
+                    <img src="{{ url_for('static', filename='images/devendra-nikam-profile.png') }}" alt="Devendra Nikam">
+                </div>
+
+                <div class="about-detail-text animate-right delay-3">
+                    <span class="intro-text">ABOUT ME</span>
+                    <h1>Devendra Nikam</h1>
+
+                    <p>
+                        I’m Devendra Nikam, i have completed my master degree in Statistics pursuing my M. I am passionate about Web development and have a strong interest in building modern web applications. My primary focus is on Python and Django, and I enjoy creating clean, responsive, and user-friendly projects that solve real-world problems. I am always eager to improve my technical skills by learning new tools and technologies in web development. Along with backend development, I also explore frontend design to create complete full-stack solutions. I believe in continuous learning, practical implementation, and turning ideas into meaningful digital experiences through coding.
+                    </p>
+
+                    <p>
+                        My primary interest is in backend development, especially using Django and Flask, where I work on building secure, structured, and high-performance web applications. I have experience developing projects that include dynamic websites, REST-based functionalities, database-driven applications, and interactive systems designed to solve real-world challenges.
+                    </p>
+
+                    <p>
+                        Alongside backend technologies, I also have a keen interest in frontend development, which allows me to create complete full-stack solutions. I work with modern UI design principles to build responsive, clean, and user-friendly interfaces, ensuring that applications are not only functional but also visually appealing and intuitive for users.
+                    </p>
+
+                    <p>
+                        Beyond web development, I actively explore data analysis and web scraping, using Python libraries and automation tools to extract, process, and analyze data efficiently. I enjoy working with structured and unstructured datasets, turning raw information into useful insights that can support decision-making or power applications.
+                    </p>
+
+                    <p>
+                        My technical journey also includes learning and applying related technologies such as API integration, database management, version control, automation scripting, and problem-solving through practical coding. I am continuously improving my knowledge by exploring new frameworks, tools, and development practices to stay updated with modern industry standards.
+                    </p>
+
+                    <p>
+                        I believe in continuous learning, hands-on implementation, and building meaningful projects that reflect both technical skills and creativity. My goal is to grow as a full-stack developer, contribute to innovative software solutions, and create digital experiences that make a real difference.
+                    </p>
+
+                    <div class="about-detail-links">
+                        <a href="https://github.com/devendranikam1004" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/devendra-nikam-b689b6322/?skipRedirect=true" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}" target="_blank"><i class="fa-regular fa-file"></i></a>
+                        <a href="https://wa.me/918830691277?text=Hii Devendra Nikam I'am Come From Your Web-Site" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const menuButton = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-link");
+
+        if (menuButton && navLinks) {
+            menuButton.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+</body>
+</html>

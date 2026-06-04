@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <title>Devendra Nikam Portfolio</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <header id="home" class="header">
+        <canvas id="starCanvas"></canvas>
+
+        <div class="header-content">
+            <div class="home-skills-panel">
+                <div class="home-skill-row">
+                    <span>Programming Languages</span>
+                    <p>Python, SQL</p>
+                </div>
+
+                <div class="home-skill-row">
+                    <span>Frontend Technologies</span>
+                    <p>HTML, CSS</p>
+                </div>
+
+                <div class="home-skill-row">
+                    <span>Backend Frameworks</span>
+                    <p>Flask, Django</p>
+                </div>
+
+                <div class="home-skill-row">
+                    <span>Libraries</span>
+                    <p>Pandas, NumPy, Matplotlib, Seaborn</p>
+                </div>
+
+                <div class="home-skill-row">
+                    <span>Developer Tools &amp; Platforms</span>
+                    <p>GitHub, Jupyter Notebook, VS Code</p>
+                </div>
+
+                <div class="home-skill-row">
+                    <span>Data Analysis Tools</span>
+                    <p>Excel &amp; Advanced Excel, Power BI, Tableau</p>
+                </div>
+            </div>
+
+            <div class="hero-text">
+                <span class="intro-text">HELLO, I'M</span>
+
+                <h1>
+                    Devendra <span>Nikam</span>
+                </h1>
+
+                <h3>Aspiring Python Developer</h3>
+
+                <p>
+                    Passionate about building efficient and scalable web applications
+                    and turning ideas into real-world solutions.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="{{ url_for('section_page', section_name='contact') }}" class="btn-primary">Get In Touch</a>
+
+                    <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}"
+                       class="btn-secondary" target="_blank">
+                       View Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% include 'about.html' %}
+
+    {% include 'skills.html' %}
+
+    {% include 'projects.html' %}
+
+    {% include 'education.html' %}
+
+    {% include 'contact.html' %}
+
+    <footer class="footer">
+        <p>© 2026 <a href="/" class="Footername">Devendra Nikam</a> All rights reserved.</p>
+
+        <div class="social-links">
+            <a href="https://github.com/devendranikam1004" target="blank">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/devendra-nikam-b689b6322/?skipRedirect=true" target="">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://wa.me/919075736268?text=Hii Devendra Nikam I'am Come From Your Web-Site" target="">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}" target="_blank">
+                <i class="fa-solid fa-book-open-reader"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    {% if scroll_target %}
+    <script>
+        window.addEventListener("load", function () {
+            const target = document.getElementById("{{ scroll_target }}");
+
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    </script>
+    {% endif %}
+
+    <script>
+        const menuButton = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-link");
+
+        if (menuButton && navLinks) {
+            menuButton.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        }
+    </script>
+
+    <script>
+        document.querySelectorAll(".work-card[data-detail-url]").forEach(function (card) {
+            card.addEventListener("click", function (event) {
+                if (event.target.closest("a")) {
+                    return;
+                }
+
+                window.location.href = card.dataset.detailUrl;
+            });
+
+            card.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    window.location.href = card.dataset.detailUrl;
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $('.skills-grid').slick({
+            centerMode: true,
+            centerPadding: '0px',
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            arrows: true,
+            dots: false,
+            focusOnSelect: true,
+            speed: 500
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+
+    <script>
+    const canvas = document.getElementById("starCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    let width;
+    let height;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        createParticles();
+    }
+
+    function createParticles() {
+        particles = [];
+
+        const totalParticles = window.innerWidth < 768 ? 42 : 82;
+
+        for (let i = 0; i < totalParticles; i++) {
+            const isWarm = Math.random() > 0.45;
+
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2.8 + 1.2,
+                color: isWarm ? "245, 158, 11" : "34, 197, 94",
+                alpha: Math.random() * 0.36 + 0.16,
+                driftX: (Math.random() - 0.5) * 0.22,
+                driftY: (Math.random() - 0.5) * 0.22,
+                depth: Math.random() * 0.7 + 0.3
+            });
+        }
+    }
+
+    function drawDataLines() {
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 145) {
+                    const opacity = (1 - distance / 145) * 0.18;
+                    ctx.strokeStyle = `rgba(246, 183, 60, ${opacity})`;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+
+        ctx.fillStyle = "#101114";
+        ctx.fillRect(0, 0, width, height);
+
+        drawDataLines();
+
+        for (let particle of particles) {
+            particle.x += particle.driftX;
+            particle.y += particle.driftY;
+
+            if (particle.x < -10) particle.x = width + 10;
+            if (particle.x > width + 10) particle.x = -10;
+            if (particle.y < -10) particle.y = height + 10;
+            if (particle.y > height + 10) particle.y = -10;
+
+            const parallaxX = mouseX * particle.depth * 10;
+            const parallaxY = mouseY * particle.depth * 10;
+
+            ctx.beginPath();
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = `rgba(${particle.color}, 0.45)`;
+            ctx.fillStyle = `rgba(${particle.color}, ${particle.alpha})`;
+
+            ctx.arc(
+                particle.x + parallaxX,
+                particle.y + parallaxY,
+                particle.radius,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+
+        requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener("mousemove", function (e) {
+        mouseX = (e.clientX / width - 0.5) * 2;
+        mouseY = (e.clientY / height - 0.5) * 2;
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    animateParticles();
+</script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.title }}</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+
+    <section class="project-detail-page">
+        <style>
+            .project-detail-page {
+                position: relative;
+                min-height: 100vh;
+                padding: 104px 7% 80px;
+                overflow: hidden;
+                background:
+                    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                    linear-gradient(120deg, rgba(255, 183, 77, 0.14), transparent 34%),
+                    linear-gradient(300deg, rgba(22, 163, 74, 0.16), transparent 38%),
+                    linear-gradient(135deg, #101114 0%, #151711 48%, #08120f 100%);
+                background-size: 74px 74px, 74px 74px, auto, auto, auto;
+                color: #fff;
+            }
+
+            .project-detail-page::before {
+                content: "";
+                position: absolute;
+                width: 560px;
+                height: 560px;
+                left: -220px;
+                top: 80px;
+                border-radius: 50%;
+                background: rgba(246, 183, 60, 0.13);
+                filter: blur(90px);
+            }
+
+            .project-detail-page::after {
+                content: "";
+                position: absolute;
+                width: 460px;
+                height: 460px;
+                right: -180px;
+                bottom: 40px;
+                border-radius: 50%;
+                background: rgba(34, 197, 94, 0.12);
+                filter: blur(90px);
+            }
+
+            .project-detail-container {
+                position: relative;
+                z-index: 2;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .back-home {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: 46px;
+                padding: 0 18px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.08);
+                color: #f6b73c;
+                text-decoration: none;
+                font-weight: 600;
+                border: 1px solid rgba(246, 183, 60, 0.28);
+                margin-bottom: 34px;
+                transition: 0.3s ease;
+            }
+
+            .back-home:hover {
+                color: #fff;
+                background: rgba(246, 183, 60, 0.20);
+                transform: translateY(-3px);
+            }
+
+            .project-detail-grid {
+                display: grid;
+                grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+                gap: 34px;
+                align-items: stretch;
+                height: auto;
+            }
+
+            .project-preview {
+                min-height: 100%;
+                padding: 16px;
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.075);
+                border: 1px solid rgba(246, 183, 60, 0.22);
+                box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+                backdrop-filter: blur(14px);
+                transition: 0.35s ease;
+            }
+
+            .project-preview:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 34px 90px rgba(245, 158, 11, 0.18);
+            }
+
+            .project-preview img {
+                width: 100%;
+                height: 100%;
+                min-height: 360px;
+                object-fit: cover;
+                border-radius: 16px;
+                display: block;
+            }
+
+            .project-detail-text {
+                padding: clamp(28px, 4vw, 44px);
+                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.075);
+                border: 1px solid rgba(246, 183, 60, 0.22);
+                box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+                backdrop-filter: blur(14px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .project-label {
+                display: inline-block;
+                color: #f6b73c;
+                letter-spacing: 5px;
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 14px;
+            }
+
+            .project-detail-text h1 {
+                font-size: clamp(34px, 5vw, 58px);
+                line-height: 1.08;
+                margin: 0 0 22px;
+                color: #fff;
+            }
+
+            .project-detail-text h1::after {
+                content: "";
+                display: block;
+                width: 86px;
+                height: 5px;
+                border-radius: 999px;
+                background: linear-gradient(135deg, #f59e0b, #22c55e);
+                margin-top: 18px;
+            }
+
+            .project-detail-text p {
+                font-size: 17px;
+                line-height: 1.8;
+                color: #d8d5e8;
+                margin-bottom: 24px;
+            }
+
+            .tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 28px;
+            }
+
+            .tech-list span {
+                padding: 9px 14px;
+                border-radius: 999px;
+                background: rgba(246, 183, 60, 0.16);
+                border: 1px solid rgba(246, 183, 60, 0.28);
+                color: #fff;
+                font-size: 0.92rem;
+                font-weight: 600;
+            }
+
+            .project-info-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 22px;
+                margin-top: 26px;
+            }
+
+            .project-info-card {
+                padding: 24px;
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.075);
+                border: 1px solid rgba(246, 183, 60, 0.18);
+                transition: 0.35s ease;
+            }
+
+            .project-info-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(246, 183, 60, 0.38);
+                box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+            }
+
+            .project-info-card h3 {
+                font-size: 20px;
+                margin-bottom: 16px;
+                color: #fff;
+            }
+
+            .project-info-card ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .project-info-card li {
+                position: relative;
+                padding-left: 24px;
+                margin-bottom: 12px;
+                color: #d8d5e8;
+                line-height: 1.6;
+            }
+
+            .project-info-card li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 10px;
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #f59e0b, #22c55e);
+                box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);
+            }
+
+            .source-code-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                height: 50px;
+                padding: 0 20px;
+                border-radius: 16px;
+                color: #fff;
+                background: #f59e0b;
+                color: #101114;
+                font-weight: 700;
+                text-decoration: none;
+                transition: 0.3s ease;
+            }
+
+            .source-code-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 18px 36px rgba(245, 158, 11, 0.28);
+            }
+
+            @media (max-width: 900px) {
+                .project-detail-grid {
+                    grid-template-columns: 1fr;
+                    gap: 26px;
+                }
+
+                .project-info-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .project-preview img {
+                    height: 300px;
+                    min-height: 0;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .project-detail-page {
+                    padding: 90px 6%;
+                }
+
+                .project-preview img {
+                    height: 240px;
+                }
+
+                .project-detail-text {
+                    padding: 28px 22px;
+                }
+
+                .project-detail-text p {
+                    font-size: 16px;
+                }
+            }
+            .project-gallery {
+    margin-top: 52px;
+    padding: clamp(24px, 4vw, 42px);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(246, 183, 60, 0.22);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(14px);
+}
+
+.gallery-heading {
+    max-width: 760px;
+    margin-bottom: 34px;
+}
+
+.gallery-heading span {
+    display: inline-block;
+    color: #f6b73c;
+    letter-spacing: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.gallery-heading h2 {
+    font-size: clamp(34px, 5vw, 56px);
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.gallery-heading h2::after {
+    content: "";
+    display: block;
+    width: 86px;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f59e0b, #22c55e);
+    margin-top: 16px;
+}
+
+.gallery-heading p {
+    color: #d8d5e8;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 26px;
+}
+
+.gallery-card {
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(246, 183, 60, 0.18);
+    transition: 0.35s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 56px rgba(245, 158, 11, 0.18);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: 0.45s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.035);
+}
+
+.gallery-card p {
+    padding: 18px 20px 22px;
+    color: #d8d5e8;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .project-gallery {
+        padding: 28px 22px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-card img {
+        height: 220px;
+    }
+
+    .source-code-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+.preview-img {
+    cursor: zoom-in;
+}
+
+.image-preview-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(10px);
+}
+
+.image-preview-modal.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-preview-modal img {
+    max-width: 92vw;
+    max-height: 78vh;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.image-preview-modal p {
+    margin-top: 18px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    max-width: 800px;
+}
+
+.preview-close {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.preview-close:hover {
+    background: #f59e0b;
+    color: #101114;
+}
+        </style>
+
+        <div class="project-detail-container">
+            <a href="{{ url_for('section_page', section_name='projects') }}" class="back-home animate-up delay-1">Back to Works</a>
+
+            <div class="project-detail-grid">
+                <div class="project-preview animate-left delay-2">
+                    <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.title }}" class="work-img">
+                </div>
+
+                <div class="project-detail-text animate-right delay-3">
+                    <span class="project-label">PROJECT DETAILS</span>
+                    <h1>{{ project.title }}</h1>
+
+                    <p>{{ project.description }}</p>
+
+                    <div class="tech-list">
+                        {% for tech in project.tech_stack %}
+                            <span>{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <a href="{{ project.source }}" target="_blank" class="source-code-btn">
+                        <i class="fas fa-external-link-alt"></i> Source Code
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-info-grid">
+                <div class="project-info-card animate-up delay-4">
+                    <h3>Key Features</h3>
+                    <ul>
+                        {% for feature in project.features %}
+                            <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="project-info-card animate-up delay-5">
+                    <h3>What I Learned</h3>
+                    <ul>
+                        {% for item in project.learned %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% if project.gallery %}
+    <div class="project-gallery animate-up delay-3">
+        <div class="gallery-heading animate-up delay-4">
+            <span>WORKING PREVIEW</span>
+            <h2>Project Screenshots</h2>
+            <p>
+                These screenshots show how the project works visually, so recruiters can
+                understand the flow without reading the source code.
+            </p>
+        </div>
+
+        <div class="gallery-grid">
+            {% for item in project.gallery %}
+                <div class="gallery-card animate-scale" style="animation-delay: {{ 0.45 + (loop.index0 * 0.13) }}s;">
+                   <img src="{{ url_for('static', filename=item.image) }}"
+                   alt="{{ item.caption }}"
+                   class="preview-img"
+                   onclick="openImagePreview(this.src, this.alt)"
+>
+                    <p>{{ item.caption }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+        </div>
+        <div class="image-preview-modal" id="imagePreviewModal" onclick="closeImagePreview()">
+            <button class="preview-close" type="button" onclick="closeImagePreview()">×</button>
+            <img id="previewImage" src="" alt="">
+            <p id="previewCaption"></p>
+        </div>
+    </section>
+    <script>
+        const menuButton = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-link");
+
+        if (menuButton && navLinks) {
+            menuButton.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+            });
+        }
+    </script>
+    <script>
+    function openImagePreview(src, caption) {
+        const modal = document.getElementById("imagePreviewModal");
+        const image = document.getElementById("previewImage");
+        const text = document.getElementById("previewCaption");
+
+        image.src = src;
+        image.alt = caption;
+        text.textContent = caption;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeImagePreview() {
+        const modal = document.getElementById("imagePreviewModal");
+
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeImagePreview();
+        }
+    });
+</script>
+<script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
+</body>
+</html>

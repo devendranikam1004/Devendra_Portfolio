@@ -2,7 +2,7 @@
     <style>
         .skills {
             position: relative;
-            padding: 6rem 2rem;
+            padding: 7rem 2rem;
             background:
                 linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -41,8 +41,8 @@
         }
 
         .skills-grid {
-            margin-top: 4rem;
-            padding: 2rem 0;
+            margin-top: 4.5rem;
+            padding: 2.5rem 0 3rem;
         }
 
         .skill-link {
@@ -52,16 +52,17 @@
         }
 
         .skills-card {
+            width: 320px;
+            aspect-ratio: 1 / 1;
             background: rgba(255, 255, 255, 0.075);
             border: 1px solid rgba(246, 183, 60, 0.22);
-            padding: 2rem;
-            border-radius: 1rem;
+            padding: 2.2rem;
+            border-radius: 1.35rem;
             text-align: center;
             transition: all 0.4s ease;
             box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
             backdrop-filter: blur(14px);
-            margin: 20px;
-            min-height: 260px;
+            margin: 22px auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -74,11 +75,11 @@
         }
 
         .slick-slide {
-            transform: scale(0.82);
-            opacity: 0.5;
-            filter: blur(3px);
+            transform: scale(0.9);
+            opacity: 0.62;
+            filter: blur(1.5px);
             transition: all 0.5s ease;
-            padding: 10px;
+            padding: 14px;
         }
 
         .slick-center {
@@ -89,7 +90,8 @@
         }
 
         .slick-center .skills-card {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 26px 70px rgba(245, 158, 11, 0.22);
+            border-color: rgba(246, 183, 60, 0.38);
         }
 
         .slick-list {
@@ -129,42 +131,52 @@
         }
 
         .skills-card i {
-            font-size: 4rem;
+            font-size: 4.8rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.15rem;
         }
 
         .skills-card img {
-            width: 50px;
-            height: 50px;
+            width: 76px;
+            height: 76px;
             object-fit: contain;
             display: block;
-            margin: 0 auto 15px;
+            margin: 0 auto 22px;
         }
 
         #skill-image,
         #skill-image1 {
-            height: 80px;
-            width: 80px;
+            height: 96px;
+            width: 96px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            margin-bottom: 1.15rem;
         }
 
         .skills-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.55rem;
+            margin-bottom: 0.85rem;
             color: #fff;
         }
 
         .skills-card p {
             color: #d9dfd1;
             line-height: 1.6;
+            font-size: 0.96rem;
         }
 
         @media (max-width: 780px) {
             .skills-card {
-                max-width: 240px;
-                min-height: 260px;
+                width: min(290px, 82vw);
+                margin: 14px;
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-card i {
+                font-size: 4.5rem;
+            }
+
+            .skills-card h3 {
+                font-size: 1.45rem;
             }
         }
     </style>

@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta_description|default('Portfolio of Devendra Nikam, an aspiring Python developer skilled in Flask, Django, data analysis, web scraping, and responsive web applications.') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +13,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <title>Devendra Nikam Portfolio</title>
+    <title>{{ page_title|default('Devendra Nikam | Python Developer Portfolio') }}</title>
 </head>
 
 <body>
@@ -70,7 +72,7 @@
                 <div class="hero-buttons">
                     <a href="{{ url_for('section_page', section_name='contact') }}" class="btn-primary">Get In Touch</a>
 
-                    <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}"
+                    <a href="{{ url_for('static', filename='files/Devendra_Nikam_Resume.pdf') }}"
                        class="btn-secondary" target="_blank">
                        View Resume
                     </a>
@@ -101,11 +103,11 @@
                 <i class="fab fa-linkedin"></i>
             </a>
 
-            <a href="https://wa.me/919075736268?text=Hii Devendra Nikam I'am Come From Your Web-Site" target="">
+            <a href="https://wa.me/919075736268?text=Hi%2C%20I'm%20reaching%20out%20from%20your%20website." target="">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
 
-            <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}" target="_blank">
+            <a href="{{ url_for('static', filename='files/Devendra_Nikam_Resume.pdf') }}" target="_blank">
                 <i class="fa-solid fa-book-open-reader"></i>
             </a>
         </div>

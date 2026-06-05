@@ -213,7 +213,11 @@ projects_data = {
         "learned": ["CRUD operations", "Relational data handling", "Form validation", "Admin workflow planning", "Database-backed dashboards"],
         "gallery": [
             {
-                "image": "images/blog post.png",
+                "image": "images/lm1.png",
+                "caption": "Management-style interface for organizing library records and daily operations."
+            },
+            {
+                "image": "images/lm2.png",
                 "caption": "Management-style interface for organizing library records and daily operations."
             }
         ]
@@ -269,12 +273,21 @@ def home():
 
         return redirect("/")
 
-    return render_template("index.html", projects=projects_data)
+    return render_template(
+        "index.html",
+        projects=projects_data,
+        page_title="Devendra Nikam | Python Developer Portfolio",
+        meta_description="Portfolio of Devendra Nikam, an aspiring Python developer skilled in Flask, Django, data analysis, web scraping, and responsive web applications."
+    )
 
 
 @app.route("/about")
 def about_page():
-    return render_template("about-page.html")
+    return render_template(
+        "about-page.html",
+        page_title="About Devendra Nikam | Python Developer",
+        meta_description="Learn about Devendra Nikam's background in Statistics, Python development, Flask, Django, data analysis, and full-stack web projects."
+    )
 
 
 @app.route("/<section_name>", methods=["GET", "POST"])
@@ -296,7 +309,27 @@ def section_page(section_name):
         save_contact_message()
         return redirect(request.path)
 
-    return render_template("index.html", scroll_target=sections[section_name], projects=projects_data)
+    section_titles = {
+        "skills": "Skills | Devendra Nikam Portfolio",
+        "projects": "Projects | Devendra Nikam Portfolio",
+        "education": "Education | Devendra Nikam Portfolio",
+        "contact": "Contact Devendra Nikam | Python Developer"
+    }
+
+    section_descriptions = {
+        "skills": "Explore Devendra Nikam's technical skills in Python, Flask, Django, SQL, data analytics, and frontend development.",
+        "projects": "View Devendra Nikam's recent projects including Django apps, Flask portfolio work, web scraping, bookstore, library, and authentication systems.",
+        "education": "Education details for Devendra Nikam, including Statistics academic background and technical learning foundation.",
+        "contact": "Contact Devendra Nikam for Python development, Flask, Django, data analysis, and web application opportunities."
+    }
+
+    return render_template(
+        "index.html",
+        scroll_target=sections[section_name],
+        projects=projects_data,
+        page_title=section_titles[section_name],
+        meta_description=section_descriptions[section_name]
+    )
 
 
 @app.route("/skill/<skill_name>")
@@ -306,7 +339,12 @@ def skill_page(skill_name):
     if not skill:
         return redirect("/skills")
 
-    return render_template("skill-detail.html", skill=skill)
+    return render_template(
+        "skill-detail.html",
+        skill=skill,
+        page_title=f"{skill['name']} Skill | Devendra Nikam",
+        meta_description=f"Details about Devendra Nikam's {skill['name']} skills, learning areas, and related project practice."
+    )
 
 
 @app.route("/project/<project_name>")
@@ -316,7 +354,12 @@ def project_page(project_name):
     if not project:
         return redirect("/projects")
 
-    return render_template("project-detail.html", project=project)
+    return render_template(
+        "project-detail.html",
+        project=project,
+        page_title=f"{project['title']} | Devendra Nikam Project",
+        meta_description=project["description"]
+    )
 
 
 if __name__ == "__main__":

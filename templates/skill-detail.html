@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ skill.name }} Skill</title>
+    <meta name="description" content="{{ meta_description|default('Details about Devendra Nikam skill practice and related projects.') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <title>{{ page_title|default(skill.name ~ ' Skill | Devendra Nikam') }}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>

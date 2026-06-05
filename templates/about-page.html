@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Devendra Nikam</title>
+    <meta name="description" content="{{ meta_description|default('Learn about Devendra Nikam, a Python developer with a Statistics background, Flask and Django project experience, and data analysis skills.') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
+    <title>{{ page_title|default('About Devendra Nikam | Python Developer') }}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -241,7 +243,7 @@
                     <h1>Devendra Nikam</h1>
 
                     <p>
-                        I’m Devendra Nikam, i have completed my master degree in Statistics pursuing my M. I am passionate about Web development and have a strong interest in building modern web applications. My primary focus is on Python and Django, and I enjoy creating clean, responsive, and user-friendly projects that solve real-world problems. I am always eager to improve my technical skills by learning new tools and technologies in web development. Along with backend development, I also explore frontend design to create complete full-stack solutions. I believe in continuous learning, practical implementation, and turning ideas into meaningful digital experiences through coding.
+                        I'm Devendra Nikam, and I have completed my master's degree in Statistics. I am passionate about web development and have a strong interest in building modern web applications. My primary focus is on Python and Django, and I enjoy creating clean, responsive, and user-friendly projects that solve real-world problems.
                     </p>
 
                     <p>
@@ -267,8 +269,8 @@
                     <div class="about-detail-links">
                         <a href="https://github.com/devendranikam1004" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/devendra-nikam-b689b6322/?skipRedirect=true" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="{{ url_for('static', filename='files/Devendra_resume_FSD.pdf') }}" target="_blank"><i class="fa-regular fa-file"></i></a>
-                        <a href="https://wa.me/918830691277?text=Hii Devendra Nikam I'am Come From Your Web-Site" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="{{ url_for('static', filename='files/Devendra_Nikam_Resume.pdf') }}" target="_blank"><i class="fa-regular fa-file"></i></a>
+                        <a href="https://wa.me/918830691277?text=Hi%2C%20I'm%20reaching%20out%20from%20your%20website." target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>

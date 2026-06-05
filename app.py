@@ -153,7 +153,7 @@ projects_data = {
     "portfolio-site": {
         "title": "Professional Portfolio Site",
         "image": "images/flask.jpg",
-        "source": "https://github.com/devendranikam1004/Flask_Projects",
+        "source": "https://github.com/devendranikam1004/Devendra_Portfolio",
         "description": "A responsive portfolio website developed using Flask, Python, HTML and  CSS to showcase projects, skills, resume, and contact information professionally.",
         "tech_stack": ["Python", "Flask", "HTML", "CSS", "SQLite"],
         "features": ["Animated hero section", "Contact form", "Skills carousel", "Project showcase", "Responsive layout"],
@@ -189,15 +189,19 @@ projects_data = {
         ]
     },
     "bookstore-website": {
-        "title": "Bookstore Website",
+        "title": "Bookstore-ecommerce-django",
         "image": "images/B1.png",
-        "source": "https://github.com/devendranikam1004",
+        "source": "https://github.com/devendranikam1004/BooksStore_website_using_Django",
         "description": "A bookstore website project designed to present books, categories, pricing, and browsing flows in a clean web interface.",
         "tech_stack": ["Python", "Flask/Django", "HTML", "CSS", "SQLite"],
         "features": ["Book listing pages", "Category-based browsing", "Book detail view", "Responsive layout", "Database-ready structure"],
         "learned": ["Catalog page design", "Template reuse", "Content organization", "Responsive card layouts", "Backend-driven pages"],
         "gallery": [
             {
+                "image": "images/B1.png",
+                "caption": "Bookstore website interface focused on clean browsing and product presentation."
+            },
+             {
                 "image": "images/B2.png",
                 "caption": "Bookstore website interface focused on clean browsing and product presentation."
             }
@@ -205,7 +209,7 @@ projects_data = {
     },
     "library-management": {
         "title": "Library Management System",
-        "image": "images/lbs.jpg",
+        "image": "images/lb.png",
         "source": "https://github.com/devendranikam1004",
         "description": "A library management system project for handling books, members, issue records, returns, and organized library operations.",
         "tech_stack": ["Python", "Django/Flask", "HTML", "CSS", "SQLite"],

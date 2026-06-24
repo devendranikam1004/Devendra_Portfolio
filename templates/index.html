@@ -171,7 +171,25 @@
             arrows: true,
             dots: false,
             focusOnSelect: true,
-            speed: 500
+            speed: 500,
+            responsive: [
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2,
+                        centerMode: false
+                    }
+                },
+                {
+                    breakpoint: 620,
+                    settings: {
+                        slidesToShow: 1,
+                        centerMode: true,
+                        arrows: false,
+                        dots: true
+                    }
+                }
+            ]
         });
     </script>
 

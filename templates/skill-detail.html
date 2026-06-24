@@ -19,7 +19,7 @@
     .skill-detail-page {
         position: relative;
         min-height: 100vh;
-        padding: 100px 7%;
+        padding: clamp(88px, 9vw, 110px) clamp(18px, 7vw, 7%);
         overflow: hidden;
         background:
             linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -88,15 +88,16 @@
 
     .skill-detail-card {
         display: grid;
-        grid-template-columns: 360px 1fr;
-        gap: 70px;
+        grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+        gap: clamp(36px, 6vw, 70px);
         align-items: center;
     }
 
     .skill-detail-icon {
         position: relative;
-        width: 320px;
-        height: 320px;
+        width: min(320px, 78vw);
+        aspect-ratio: 1;
+        height: auto;
         border-radius: 34px;
         display: flex;
         align-items: center;
@@ -122,8 +123,8 @@
     .skill-detail-icon::before {
         content: "";
         position: absolute;
-        width: 260px;
-        height: 260px;
+        width: 82%;
+        height: 82%;
         border-radius: 30px;
         background: linear-gradient(135deg, #f59e0b, #22c55e);
         transform: rotate(-7deg);
@@ -145,7 +146,7 @@
     }
 
     .skill-detail-info {
-        padding: 44px;
+        padding: clamp(28px, 4vw, 44px);
         border-radius: 32px;
         background: rgba(255, 255, 255, 0.075);
         border: 1px solid rgba(246, 183, 60, 0.22);
@@ -297,11 +298,24 @@
         }
 
         .skill-detail-info h1 {
-            font-size: 48px;
+            font-size: clamp(36px, 12vw, 48px);
+        }
+    }
+
+    @media (max-width: 420px) {
+        .skill-stars {
+            flex-wrap: wrap;
+        }
+
+        .star {
+            font-size: 25px;
+        }
+
+        .skill-detail-grid > div {
+            padding: 20px 18px;
         }
     }
 </style>
-        </style>
 
         <div class="skill-detail-container">
             <a href="{{ url_for('section_page', section_name='skills') }}" class="back-home animate-up delay-1">Back to Skills</a>

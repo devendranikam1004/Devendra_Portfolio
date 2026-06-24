@@ -2,7 +2,7 @@
     <style>
         .contact {
             position: relative;
-            padding: 7rem 2rem;
+            padding: clamp(5rem, 8vw, 7rem) clamp(1rem, 4vw, 2rem);
             background:
                 linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -65,7 +65,7 @@
 
         .contact-layout {
             display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
             gap: 34px;
             align-items: start;
         }
@@ -80,8 +80,8 @@
             align-items: center;
             gap: 20px;
             min-height: 112px;
-            padding: 26px;
-            border-radius: 28px;
+            padding: clamp(20px, 3vw, 26px);
+            border-radius: clamp(18px, 3vw, 28px);
             background: rgba(255, 255, 255, 0.075);
             border: 1px solid rgba(246, 183, 60, 0.22);
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
@@ -128,8 +128,8 @@
 
         /* ── Form ─────────────────────────────── */
         .contact-form {
-            padding: 42px;
-            border-radius: 28px;
+            padding: clamp(26px, 4vw, 42px);
+            border-radius: clamp(18px, 3vw, 28px);
             background: rgba(255, 255, 255, 0.075);
             border: 1px solid rgba(246, 183, 60, 0.22);
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
@@ -199,8 +199,8 @@
         /* ── Confirmation card ─────────────────── */
         .confirm-card {
             display: none;
-            padding: 42px;
-            border-radius: 28px;
+            padding: clamp(26px, 4vw, 42px);
+            border-radius: clamp(18px, 3vw, 28px);
             background: rgba(255, 255, 255, 0.075);
             border: 1px solid rgba(246, 183, 60, 0.22);
             box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
@@ -340,6 +340,30 @@
             .contact-layout { grid-template-columns: 1fr; }
             .contact-info-card { padding: 22px; }
             .toast { bottom: 20px; right: 16px; left: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .contact-info-card {
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .contact-info-icon {
+                width: 52px;
+                height: 52px;
+                border-radius: 16px;
+                font-size: 1.35rem;
+            }
+
+            .confirm-row {
+                flex-direction: column;
+                gap: 6px;
+                padding: 14px 16px;
+            }
+
+            .confirm-label {
+                min-width: 0;
+            }
         }
     </style>
 

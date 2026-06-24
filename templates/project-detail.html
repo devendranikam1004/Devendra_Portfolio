@@ -19,7 +19,7 @@
             .project-detail-page {
                 position: relative;
                 min-height: 100vh;
-                padding: 104px 7% 80px;
+                padding: clamp(90px, 9vw, 110px) clamp(18px, 7vw, 7%) clamp(58px, 7vw, 80px);
                 overflow: hidden;
                 background:
                     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -86,7 +86,7 @@
 
             .project-detail-grid {
                 display: grid;
-                grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+                grid-template-columns: minmax(min(100%, 300px), 0.9fr) minmax(0, 1.1fr);
                 gap: 34px;
                 align-items: stretch;
                 height: auto;
@@ -110,9 +110,10 @@
 
             .project-preview img {
                 width: 100%;
-                height: 100%;
-                min-height: 360px;
-                object-fit: fill;
+                height: auto;
+                min-height: 0;
+                aspect-ratio: 16 / 11;
+                object-fit: cover;
                 object-position: center;
                 border-radius: 16px;
                 display: block;
@@ -182,7 +183,7 @@
 
             .project-info-grid {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 22px;
                 margin-top: 26px;
             }
@@ -263,7 +264,7 @@
                 }
 
                 .project-preview img {
-                    height: 300px;
+                    aspect-ratio: 16 / 9;
                     min-height: 0;
                 }
             }
@@ -274,7 +275,7 @@
                 }
 
                 .project-preview img {
-                    height: 240px;
+                    aspect-ratio: 16 / 10;
                 }
 
                 .project-detail-text {
@@ -333,7 +334,7 @@
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 26px;
 }
 
@@ -352,8 +353,9 @@
 
 .gallery-card img {
     width: 100%;
-    height: 320px;
-    object-fit: fill;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
     object-position: center;
     display: block;
     transition: 0.45s ease;
@@ -380,7 +382,7 @@
     }
 
     .gallery-card img {
-        height: 250px;
+        aspect-ratio: 16 / 10;
     }
 
     .source-code-btn {
@@ -399,7 +401,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 32px;
+    padding: clamp(18px, 4vw, 32px);
     background: rgba(0, 0, 0, 0.88);
     backdrop-filter: blur(10px);
 }
@@ -444,6 +446,26 @@
 .preview-close:hover {
     background: #f59e0b;
     color: #101114;
+}
+
+@media (max-width: 420px) {
+    .project-info-card {
+        padding: 20px 18px;
+    }
+
+    .tech-list span {
+        border-radius: 12px;
+    }
+
+    .gallery-heading span,
+    .project-label {
+        letter-spacing: 3px;
+    }
+
+    .preview-close {
+        top: 14px;
+        right: 14px;
+    }
 }
         </style>
 

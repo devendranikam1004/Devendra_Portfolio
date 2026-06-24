@@ -44,8 +44,8 @@
             max-width: 1160px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 390px 1fr;
-            gap: 90px;
+            grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+            gap: clamp(42px, 7vw, 90px);
             align-items: center;
         }
 
@@ -59,8 +59,8 @@
         .profile-img::before {
             content: "";
             position: absolute;
-            width: 310px;
-            height: 380px;
+            width: min(310px, 74vw);
+            height: min(380px, 88vw);
             top: -22px;
             left: 10px;
             border-radius: 28px;
@@ -71,8 +71,9 @@
         }
 
         .profile-img img {
-            width: 320px;
-            height: 390px;
+            width: min(320px, 78vw);
+            height: auto;
+            aspect-ratio: 320 / 390;
             object-fit: cover;
             border-radius: 26px;
             border: 8px solid rgba(255, 255, 255, 0.86);
@@ -115,7 +116,7 @@
 
         .about-text {
             position: relative;
-            padding: 46px;
+            padding: clamp(28px, 4vw, 46px);
             background: rgba(255, 255, 255, 0.075);
             border-radius: 28px;
             border: 1px solid rgba(246, 183, 60, 0.22);
@@ -189,8 +190,8 @@
             }
 
             .profile-img img {
-                width: 280px;
-                height: 340px;
+                width: min(280px, 82vw);
+                height: auto;
             }
 
             .about-text {
@@ -204,6 +205,21 @@
             .about .section-title::after {
                 margin-left: auto;
                 margin-right: auto;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .about {
+                padding: 5rem 1rem;
+            }
+
+            .about-text {
+                padding: 28px 18px;
+            }
+
+            .about-link {
+                gap: 10px;
+                flex-wrap: wrap;
             }
         }
     </style>

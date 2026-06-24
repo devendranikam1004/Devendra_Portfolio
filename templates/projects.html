@@ -2,7 +2,7 @@
     <style>
         .works {
             position: relative;
-            padding: 7rem 2rem;
+            padding: clamp(5rem, 8vw, 7rem) clamp(1rem, 4vw, 2rem);
             background:
                 linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
@@ -54,7 +54,7 @@
 
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
             gap: 28px;
             align-items: stretch;
         }
@@ -62,7 +62,7 @@
         .work-card {
             position: relative;
             overflow: hidden;
-            border-radius: 28px;
+            border-radius: clamp(18px, 3vw, 28px);
             background: rgba(255, 255, 255, 0.075);
             border: 1px solid rgba(246, 183, 60, 0.22);
             box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
@@ -84,8 +84,9 @@
 
         .work-img {
             width: 100%;
-            height: 260px;
-            object-fit: fill;
+            aspect-ratio: 16 / 10;
+            height: auto;
+            object-fit: cover;
             object-position: center;
             display: block;
             cursor: pointer;
@@ -97,7 +98,7 @@
         }
 
         .work-info {
-            padding: 28px;
+            padding: clamp(20px, 3vw, 28px);
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -169,11 +170,26 @@
             }
 
             .work-img {
-                height: 240px;
+                aspect-ratio: 16 / 11;
             }
 
             .work-actions a {
                 flex: 1 1 150px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .works {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .work-actions {
+                gap: 10px;
+            }
+
+            .work-actions a {
+                width: 100%;
             }
         }
     </style>

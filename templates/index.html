@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ meta_description|default('Portfolio of Devendra Nikam, an aspiring Python developer skilled in Flask, Django, data analysis, web scraping, and responsive web applications.') }}">
+    <meta name="description"
+        content="{{ meta_description|default('Portfolio of Devendra Nikam, an aspiring Python developer skilled in Flask, Django, data analysis, web scraping, and responsive web applications.') }}">
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -31,12 +34,12 @@
 
                 <div class="home-skill-row">
                     <span>Frontend Technologies</span>
-                    <p>HTML, CSS</p>
+                    <p>HTML, CSS, Javascript, React.js</p>
                 </div>
 
                 <div class="home-skill-row">
                     <span>Backend Frameworks</span>
-                    <p>Flask, Django</p>
+                    <p>Flask, Django, Django-Rest Api</p>
                 </div>
 
                 <div class="home-skill-row">
@@ -62,7 +65,9 @@
                     Devendra <span>Nikam</span>
                 </h1>
 
-                <h3>Aspiring Python Developer</h3>
+                <h3>Python Developer Intern</h3>
+                <span>Sagveek Technologies,Pvt. Ltd.</span>
+
 
                 <p>
                     Passionate about building efficient and scalable web applications
@@ -72,9 +77,9 @@
                 <div class="hero-buttons">
                     <a href="{{ url_for('section_page', section_name='contact') }}" class="btn-primary">Get In Touch</a>
 
-                    <a href="{{ url_for('static', filename='files/Devendra_Nikam_Resume.pdf') }}"
-                       class="btn-secondary" target="_blank">
-                       View Resume
+                    <a href="{{ url_for('static', filename='files/Devendra_Nikam_Resume.pdf') }}" class="btn-secondary"
+                        target="_blank">
+                        View Resume
                     </a>
                 </div>
             </div>
@@ -196,124 +201,125 @@
     <script src="{{ url_for('static', filename='js/scroll-animations.js') }}"></script>
 
     <script>
-    const canvas = document.getElementById("starCanvas");
-    const ctx = canvas.getContext("2d");
+        const canvas = document.getElementById("starCanvas");
+        const ctx = canvas.getContext("2d");
 
-    let particles = [];
-    let width;
-    let height;
-    let mouseX = 0;
-    let mouseY = 0;
+        let particles = [];
+        let width;
+        let height;
+        let mouseX = 0;
+        let mouseY = 0;
 
-    function resizeCanvas() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        function resizeCanvas() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
-        width = window.innerWidth;
-        height = window.innerHeight;
+            width = window.innerWidth;
+            height = window.innerHeight;
 
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
 
-        canvas.style.width = width + "px";
-        canvas.style.height = height + "px";
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
 
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-        createParticles();
-    }
-
-    function createParticles() {
-        particles = [];
-
-        const totalParticles = window.innerWidth < 768 ? 42 : 82;
-
-        for (let i = 0; i < totalParticles; i++) {
-            const isWarm = Math.random() > 0.45;
-
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                radius: Math.random() * 2.8 + 1.2,
-                color: isWarm ? "245, 158, 11" : "34, 197, 94",
-                alpha: Math.random() * 0.36 + 0.16,
-                driftX: (Math.random() - 0.5) * 0.22,
-                driftY: (Math.random() - 0.5) * 0.22,
-                depth: Math.random() * 0.7 + 0.3
-            });
+            createParticles();
         }
-    }
 
-    function drawDataLines() {
-        ctx.lineWidth = 1;
+        function createParticles() {
+            particles = [];
 
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+            const totalParticles = window.innerWidth < 768 ? 42 : 82;
 
-                if (distance < 145) {
-                    const opacity = (1 - distance / 145) * 0.18;
-                    ctx.strokeStyle = `rgba(246, 183, 60, ${opacity})`;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
+            for (let i = 0; i < totalParticles; i++) {
+                const isWarm = Math.random() > 0.45;
+
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 2.8 + 1.2,
+                    color: isWarm ? "245, 158, 11" : "34, 197, 94",
+                    alpha: Math.random() * 0.36 + 0.16,
+                    driftX: (Math.random() - 0.5) * 0.22,
+                    driftY: (Math.random() - 0.5) * 0.22,
+                    depth: Math.random() * 0.7 + 0.3
+                });
+            }
+        }
+
+        function drawDataLines() {
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 145) {
+                        const opacity = (1 - distance / 145) * 0.18;
+                        ctx.strokeStyle = `rgba(246, 183, 60, ${opacity})`;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
                 }
             }
         }
-    }
 
-    function animateParticles() {
-        ctx.clearRect(0, 0, width, height);
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
 
-        ctx.fillStyle = "#101114";
-        ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = "#101114";
+            ctx.fillRect(0, 0, width, height);
 
-        drawDataLines();
+            drawDataLines();
 
-        for (let particle of particles) {
-            particle.x += particle.driftX;
-            particle.y += particle.driftY;
+            for (let particle of particles) {
+                particle.x += particle.driftX;
+                particle.y += particle.driftY;
 
-            if (particle.x < -10) particle.x = width + 10;
-            if (particle.x > width + 10) particle.x = -10;
-            if (particle.y < -10) particle.y = height + 10;
-            if (particle.y > height + 10) particle.y = -10;
+                if (particle.x < -10) particle.x = width + 10;
+                if (particle.x > width + 10) particle.x = -10;
+                if (particle.y < -10) particle.y = height + 10;
+                if (particle.y > height + 10) particle.y = -10;
 
-            const parallaxX = mouseX * particle.depth * 10;
-            const parallaxY = mouseY * particle.depth * 10;
+                const parallaxX = mouseX * particle.depth * 10;
+                const parallaxY = mouseY * particle.depth * 10;
 
-            ctx.beginPath();
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = `rgba(${particle.color}, 0.45)`;
-            ctx.fillStyle = `rgba(${particle.color}, ${particle.alpha})`;
+                ctx.beginPath();
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = `rgba(${particle.color}, 0.45)`;
+                ctx.fillStyle = `rgba(${particle.color}, ${particle.alpha})`;
 
-            ctx.arc(
-                particle.x + parallaxX,
-                particle.y + parallaxY,
-                particle.radius,
-                0,
-                Math.PI * 2
-            );
+                ctx.arc(
+                    particle.x + parallaxX,
+                    particle.y + parallaxY,
+                    particle.radius,
+                    0,
+                    Math.PI * 2
+                );
 
-            ctx.fill();
+                ctx.fill();
+            }
+
+            ctx.shadowBlur = 0;
+
+            requestAnimationFrame(animateParticles);
         }
 
-        ctx.shadowBlur = 0;
+        window.addEventListener("mousemove", function (e) {
+            mouseX = (e.clientX / width - 0.5) * 2;
+            mouseY = (e.clientY / height - 0.5) * 2;
+        });
 
-        requestAnimationFrame(animateParticles);
-    }
+        window.addEventListener("resize", resizeCanvas);
 
-    window.addEventListener("mousemove", function (e) {
-        mouseX = (e.clientX / width - 0.5) * 2;
-        mouseY = (e.clientY / height - 0.5) * 2;
-    });
-
-    window.addEventListener("resize", resizeCanvas);
-
-    resizeCanvas();
-    animateParticles();
-</script>
+        resizeCanvas();
+        animateParticles();
+    </script>
 </body>
+
 </html>

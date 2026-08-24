@@ -213,8 +213,15 @@
         }
 
         @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .confirm-icon {
@@ -319,27 +326,53 @@
             font-size: 1rem;
             font-weight: 600;
             color: #101114;
-            box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
             display: flex;
             align-items: center;
             gap: 10px;
             transform: translateY(80px);
             opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
             pointer-events: none;
         }
 
-        .toast.toast-success { background: linear-gradient(135deg, #f59e0b, #22c55e); }
-        .toast.toast-error   { background: linear-gradient(135deg, #ef4444, #f97316); color: #fff; }
-        .toast.show          { transform: translateY(0); opacity: 1; }
+        .toast.toast-success {
+            background: linear-gradient(135deg, #f59e0b, #22c55e);
+        }
+
+        .toast.toast-error {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            color: #fff;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         @media (max-width: 768px) {
-            .contact { padding: 5.5rem 1.2rem; }
+            .contact {
+                padding: 5.5rem 1.2rem;
+            }
+
             .contact-form,
-            .confirm-card { padding: 28px; }
-            .contact-layout { grid-template-columns: 1fr; }
-            .contact-info-card { padding: 22px; }
-            .toast { bottom: 20px; right: 16px; left: 16px; }
+            .confirm-card {
+                padding: 28px;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-card {
+                padding: 22px;
+            }
+
+            .toast {
+                bottom: 20px;
+                right: 16px;
+                left: 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -390,7 +423,7 @@
                     </span>
                     <div>
                         <h3>Email Me</h3>
-                        <a href="mailto:nikamdevendra1004@gmail.com">nikamdevendra1004@gmail.com</a>
+                        <a href="mailto:ndevanikam2005@gmail.com">ndevanikam2005@gmail.com</a>
                     </div>
                 </div>
 
@@ -409,39 +442,21 @@
             <form class="contact-form" id="contactForm" novalidate>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Devendra Nikam"
-                        pattern="^[A-Za-z]+ [A-Za-z]+$"
-                        title="Enter first and last name, for example Devendra Nikam"
-                        required
-                    >
+                    <input type="text" id="name" name="name" placeholder="Devendra Nikam"
+                        pattern="^[A-Za-z]+ [A-Za-z]+$" title="Enter first and last name, for example Devendra Nikam"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="you@example.com"
-                        title="Enter a valid email address"
-                        required
-                    >
+                    <input type="email" id="email" name="email" placeholder="you@example.com"
+                        title="Enter a valid email address" required>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea
-                        rows="5"
-                        id="message"
-                        name="message"
-                        placeholder="Write your message here…"
-                        maxlength="300"
-                        required
-                    ></textarea>
+                    <textarea rows="5" id="message" name="message" placeholder="Write your message here…"
+                        maxlength="300" required></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
